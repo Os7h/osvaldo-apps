@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -256,7 +255,7 @@ export default function Transactions() {
                   className="pl-10"
                 />
               </div>
-              <Select value={typeFilter} onValueChange={setTypeFilter}>
+              <Select value={typeFilter} onValueChange={(v) => v && setTypeFilter(v)}>
                 <SelectTrigger className="w-full sm:w-40">
                   <SelectValue placeholder="Alle Typen" />
                 </SelectTrigger>
@@ -268,7 +267,7 @@ export default function Transactions() {
                   <SelectItem value="adjust">Anpassungen</SelectItem>
                 </SelectContent>
               </Select>
-              <Select value={channelFilter} onValueChange={setChannelFilter}>
+              <Select value={channelFilter} onValueChange={(v) => v && setChannelFilter(v)}>
                 <SelectTrigger className="w-full sm:w-40">
                   <SelectValue placeholder="Alle Kanäle" />
                 </SelectTrigger>

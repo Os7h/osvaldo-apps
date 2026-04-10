@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { supabase } from "../db";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 
 interface Order {
@@ -27,7 +28,7 @@ const OrderConfirmation = () => {
   }, [id]);
 
   if (loading) return <main className="min-h-screen bg-background text-foreground flex items-center justify-center"><p>Laden...</p></main>;
-  if (!order) return <main className="min-h-screen bg-background text-foreground flex items-center justify-center"><div className="text-center"><p>Bestellung nicht gefunden.</p><Button asChild className="mt-4"><Link to="/pickup">Zurück zum Menü</Link></Button></div></main>;
+  if (!order) return <main className="min-h-screen bg-background text-foreground flex items-center justify-center"><div className="text-center"><p>Bestellung nicht gefunden.</p><Link to="/pickup" className={cn(buttonVariants(), "mt-4")}>Zurück zum Menü</Link></div></main>;
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -47,7 +48,7 @@ const OrderConfirmation = () => {
             </ul>
             <div className="flex justify-between mt-3 font-semibold"><span>Summe</span><span>€ {Number(order.total_eur).toFixed(2)}</span></div>
           </div>
-          <div className="text-center pt-4"><Button asChild><Link to="/pickup">Neue Bestellung</Link></Button></div>
+          <div className="text-center pt-4"><Link to="/pickup" className={cn(buttonVariants())}>Neue Bestellung</Link></div>
         </article>
       </section>
     </main>

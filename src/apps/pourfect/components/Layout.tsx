@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { LayoutDashboard, Package, ClipboardList, BarChart3, ArrowLeft } from "lucide-react";
 import AboutThisApp from "@/components/shared/AboutThisApp";
 import ResetDemoButton from "@/components/shared/ResetDemoButton";
@@ -67,18 +68,14 @@ export default function PourfectLayout({ children }: LayoutProps) {
             <div className="flex items-center justify-between gap-2">
               <div className="flex gap-1 flex-1 sm:gap-2">
                 {navItems.map((item) => (
-                  <Button
+                  <Link
                     key={item.path}
-                    variant={isActive(item.path) ? "default" : "ghost"}
-                    size="sm"
-                    asChild
-                    className="flex-1 sm:flex-none"
+                    to={item.path}
+                    className={cn(buttonVariants({ variant: isActive(item.path) ? "default" : "ghost", size: "sm" }), "flex-1 sm:flex-none flex items-center justify-center gap-1")}
                   >
-                    <Link to={item.path} className="flex items-center justify-center gap-1">
-                      <item.icon className="h-3 w-3 sm:h-4 sm:w-4" />
-                      <span className="text-xs sm:text-sm truncate">{item.label}</span>
-                    </Link>
-                  </Button>
+                    <item.icon className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span className="text-xs sm:text-sm truncate">{item.label}</span>
+                  </Link>
                 ))}
               </div>
               <div className="flex items-center gap-1">
@@ -90,11 +87,9 @@ export default function PourfectLayout({ children }: LayoutProps) {
                   features={aboutFeatures}
                   techStack={["React 18", "TypeScript", "Tailwind CSS", "shadcn/ui", "Recharts", "localStorage"]}
                 />
-                <Button variant="ghost" size="icon" asChild className="shrink-0">
-                  <Link to="/">
+                <Link to="/" className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "shrink-0")}>
                     <ArrowLeft className="h-4 w-4" />
-                  </Link>
-                </Button>
+                </Link>
               </div>
             </div>
           </div>

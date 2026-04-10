@@ -69,8 +69,6 @@ const stock_entries = [
 
 // Generate 25 transactions over the last 90 days
 function generateTransactions() {
-  const types = ["sale", "purchase", "return", "adjust"] as const;
-  const channels = ["store", "online", "restaurant"] as const;
   const now = Date.now();
   const day = 86400000;
 

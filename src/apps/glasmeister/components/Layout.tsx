@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { ClipboardList, Package, Settings, ArrowLeft } from "lucide-react";
 import AboutThisApp from "@/components/shared/AboutThisApp";
 import ResetDemoButton from "@/components/shared/ResetDemoButton";
@@ -36,39 +37,18 @@ export default function GlasMeisterLayout({ children }: LayoutProps) {
             </h1>
             <div className="flex items-center justify-between gap-2">
               <div className="flex gap-1 flex-1 sm:gap-2">
-                <Button
-                  variant={location.pathname === basePath || location.pathname === `${basePath}/` ? "default" : "ghost"}
-                  size="sm"
-                  asChild
-                  className="flex-1 sm:flex-none"
-                >
-                  <Link to={basePath} className="flex items-center justify-center gap-1">
+                <Link to={basePath} className={cn(buttonVariants({ variant: location.pathname === basePath || location.pathname === `${basePath}/` ? "default" : "ghost", size: "sm" }), "flex-1 sm:flex-none flex items-center justify-center gap-1")}>
                     <ClipboardList className="h-3 w-3 sm:h-4 sm:w-4" />
                     <span className="text-xs sm:text-sm truncate">Schicht</span>
-                  </Link>
-                </Button>
-                <Button
-                  variant={location.pathname === `${basePath}/lager` ? "default" : "ghost"}
-                  size="sm"
-                  asChild
-                  className="flex-1 sm:flex-none"
-                >
-                  <Link to={`${basePath}/lager`} className="flex items-center justify-center gap-1">
+                </Link>
+                <Link to={`${basePath}/lager`} className={cn(buttonVariants({ variant: location.pathname === `${basePath}/lager` ? "default" : "ghost", size: "sm" }), "flex-1 sm:flex-none flex items-center justify-center gap-1")}>
                     <Package className="h-3 w-3 sm:h-4 sm:w-4" />
                     <span className="text-xs sm:text-sm truncate">Lager</span>
-                  </Link>
-                </Button>
-                <Button
-                  variant={location.pathname === `${basePath}/admin` ? "default" : "ghost"}
-                  size="sm"
-                  asChild
-                  className="flex-1 sm:flex-none"
-                >
-                  <Link to={`${basePath}/admin`} className="flex items-center justify-center gap-1">
+                </Link>
+                <Link to={`${basePath}/admin`} className={cn(buttonVariants({ variant: location.pathname === `${basePath}/admin` ? "default" : "ghost", size: "sm" }), "flex-1 sm:flex-none flex items-center justify-center gap-1")}>
                     <Settings className="h-3 w-3 sm:h-4 sm:w-4" />
                     <span className="text-xs sm:text-sm truncate">Admin</span>
-                  </Link>
-                </Button>
+                </Link>
               </div>
               <div className="flex items-center gap-1">
                 <ResetDemoButton appPrefix={GM_PREFIX} onReset={handleReset} />
@@ -79,11 +59,9 @@ export default function GlasMeisterLayout({ children }: LayoutProps) {
                   features={aboutFeatures}
                   techStack={["React 18", "TypeScript", "Tailwind CSS", "shadcn/ui", "localStorage"]}
                 />
-                <Button variant="ghost" size="icon" asChild className="shrink-0">
-                  <Link to="/">
+                <Link to="/" className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "shrink-0")}>
                     <ArrowLeft className="h-4 w-4" />
-                  </Link>
-                </Button>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "../db";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -252,10 +253,10 @@ const Index = () => {
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
           <h1 className="text-xl font-bold text-primary">Wozi Pickup</h1>
           <div className="flex items-center gap-1">
-            <Button variant="ghost" size="sm" asChild><Link to="/pickup/backoffice">Backoffice</Link></Button>
+            <Link to="/pickup/backoffice" className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}>Backoffice</Link>
             <ResetDemoButton appPrefix={PK_PREFIX} onReset={handleReset} />
             <AboutThisApp appName="Wozi Pickup" tagline="Food Ordering System" description="A customer-facing food ordering system with a dynamic menu, complex modifier system for sauces and dressings, automatic Happy Hour pricing for burgers, pickup time slot calculation based on prep time and kitchen hours, and an admin backoffice for order management." features={aboutFeatures} techStack={["React 18", "TypeScript", "Tailwind CSS", "shadcn/ui", "localStorage"]} />
-            <Button variant="ghost" size="icon" asChild><Link to="/"><ArrowLeft className="h-4 w-4" /></Link></Button>
+            <Link to="/" className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}><ArrowLeft className="h-4 w-4" /></Link>
           </div>
         </div>
       </nav>

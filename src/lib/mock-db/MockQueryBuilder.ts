@@ -26,7 +26,8 @@ export class MockQueryBuilder<T extends Record<string, unknown>> {
   private orders: OrderBy[] = [];
   private limitCount: number | null = null;
   private offsetCount: number = 0;
-  private selectColumns: string = "*";
+  // @ts-expect-error reserved for future column filtering
+  private _selectColumns: string = "*";
   private mode: "select" | "insert" | "update" | "delete" | "upsert" = "select";
   private payload: Partial<T> | Partial<T>[] | null = null;
   private singleResult = false;
@@ -39,7 +40,7 @@ export class MockQueryBuilder<T extends Record<string, unknown>> {
 
   select(columns: string = "*", options?: { count?: "exact" }): this {
     this.mode = "select";
-    this.selectColumns = columns;
+    this._selectColumns = columns;
     if (options?.count) this.countMode = options.count;
     return this;
   }
@@ -261,7 +262,7 @@ export class MockQueryBuilder<T extends Record<string, unknown>> {
         id: crypto.randomUUID(),
         created_at: new Date().toISOString(),
         ...item,
-      } as T;
+      } as unknown as T;
       return row;
     });
 
@@ -308,7 +309,7 @@ export class MockQueryBuilder<T extends Record<string, unknown>> {
           id: crypto.randomUUID(),
           created_at: new Date().toISOString(),
           ...item,
-        } as T);
+        } as unknown as T);
       }
     }
 

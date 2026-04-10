@@ -137,7 +137,7 @@ export default function Products() {
             <p className="text-muted-foreground text-sm">{products.length} Produkte registriert</p>
           </div>
           <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-            <DialogTrigger asChild>
+            <DialogTrigger>
               <Button className="gap-2">
                 <Plus className="h-4 w-4" />
                 Neues Produkt
@@ -257,7 +257,7 @@ export default function Products() {
                   className="pl-9"
                 />
               </div>
-              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+              <Select value={selectedCategory} onValueChange={(v) => v && setSelectedCategory(v)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Alle Kategorien" />
                 </SelectTrigger>

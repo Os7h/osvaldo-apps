@@ -281,7 +281,7 @@ export default function Reports() {
                         borderRadius: "8px",
                         color: "hsl(var(--foreground))",
                       }}
-                      formatter={(value: number) => [`${value}ml`, "Verbrauch"]}
+                      formatter={(value) => [`${value}ml`, "Verbrauch"]}
                     />
                     <Bar dataKey="consumed_ml" radius={[4, 4, 0, 0]}>
                       {consumptionByProduct.map((_entry, index) => (

@@ -250,7 +250,7 @@ export default function ProductDetail() {
             </div>
           </div>
           <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
-            <DialogTrigger asChild>
+            <DialogTrigger>
               <Button className="gap-2">
                 <Plus className="h-4 w-4" />
                 Neue Flasche

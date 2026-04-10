@@ -32,10 +32,8 @@ export default function AboutThisApp({
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="shrink-0">
-          <Info className="h-5 w-5" />
-        </Button>
+      <SheetTrigger className="inline-flex items-center justify-center rounded-md text-sm font-medium shrink-0 h-9 w-9 hover:bg-accent hover:text-accent-foreground">
+        <Info className="h-5 w-5" />
       </SheetTrigger>
       <SheetContent className="overflow-y-auto bg-background border-border">
         <SheetHeader>

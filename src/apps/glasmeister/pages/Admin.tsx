@@ -72,7 +72,7 @@ const Admin = () => {
             <div className="space-y-4 max-w-md">
               <div className="space-y-2">
                 <Label htmlFor="glass-select">Glas auswählen</Label>
-                <Select value={selectedGlassId} onValueChange={setSelectedGlassId}>
+                <Select value={selectedGlassId} onValueChange={(v) => v && setSelectedGlassId(v)}>
                   <SelectTrigger id="glass-select"><SelectValue placeholder="Glas wählen..." /></SelectTrigger>
                   <SelectContent>
                     {glasses.map((glass) => (

@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { supabase } from "../db";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { ArrowLeft } from "lucide-react";
 
 interface OrderRow {
@@ -31,7 +32,7 @@ const Backoffice = () => {
       <nav className="border-b border-border bg-card/95 backdrop-blur">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
           <h1 className="text-xl font-bold text-primary">Backoffice</h1>
-          <Button variant="ghost" size="sm" asChild><Link to="/pickup" className="flex items-center gap-1"><ArrowLeft className="h-4 w-4" />Zurück zum Menü</Link></Button>
+          <Link to="/pickup" className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "flex items-center gap-1")}><ArrowLeft className="h-4 w-4" />Zurück zum Menü</Link>
         </div>
       </nav>
       <section className="container mx-auto px-4 py-8">

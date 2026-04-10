@@ -75,7 +75,7 @@ export default function Settings() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label>Währung</Label>
-                    <Select value={currency} onValueChange={setCurrency}>
+                    <Select value={currency} onValueChange={(v) => v && setCurrency(v)}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -89,7 +89,7 @@ export default function Settings() {
                   </div>
                   <div className="space-y-2">
                     <Label>Zeitzone</Label>
-                    <Select value={timezone} onValueChange={setTimezone}>
+                    <Select value={timezone} onValueChange={(v) => v && setTimezone(v)}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>

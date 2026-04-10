@@ -236,7 +236,7 @@ export default function Products() {
               className="pl-10"
             />
           </div>
-          <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+          <Select value={categoryFilter} onValueChange={(v) => v && setCategoryFilter(v)}>
             <SelectTrigger className="w-full sm:w-48">
               <SelectValue placeholder="Alle Kategorien" />
             </SelectTrigger>
@@ -403,7 +403,7 @@ export default function Products() {
                   <Label>Einheit</Label>
                   <Select
                     value={form.unit_type}
-                    onValueChange={(v) => setForm({ ...form, unit_type: v })}
+                    onValueChange={(v) => v && setForm({ ...form, unit_type: v })}
                   >
                     <SelectTrigger>
                       <SelectValue />
@@ -419,7 +419,7 @@ export default function Products() {
                   <Label>Kategorie *</Label>
                   <Select
                     value={form.category_id}
-                    onValueChange={(v) => setForm({ ...form, category_id: v })}
+                    onValueChange={(v) => v && setForm({ ...form, category_id: v })}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Wählen..." />
