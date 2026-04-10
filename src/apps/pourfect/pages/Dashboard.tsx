@@ -3,8 +3,16 @@ import { supabase } from "../db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Package, Droplets, AlertTriangle, Scale } from "lucide-react";
+import { Loader2, Package, Droplets, AlertTriangle, Scale, FileBarChart } from "lucide-react";
 import Layout from "../components/Layout";
+import AppGuide from "@/components/shared/AppGuide";
+
+const guideSteps = [
+  { icon: Scale, title: "1. Flaschen wiegen", description: "Klick auf ein Produkt unter \"Produkte\" und gib das aktuelle Gewicht einer Flasche ein. Die App berechnet, wie viel ml noch drin sind." },
+  { icon: Droplets, title: "2. Füllstand verfolgen", description: "Jede Flasche hat eine Fortschrittsanzeige — grün ist voll, rot ist fast leer. Der Status wechselt automatisch." },
+  { icon: Package, title: "3. Inventar-Snapshots", description: "Unter \"Inventar\" kannst du den aktuellen Bestand als Snapshot speichern und frühere Zustände vergleichen." },
+  { icon: FileBarChart, title: "4. Berichte & Export", description: "Unter \"Berichte\" siehst du Verbrauch pro Produkt mit Charts und kannst alles als CSV herunterladen." },
+];
 
 interface Product {
   id: string;
@@ -116,7 +124,14 @@ export default function Dashboard() {
 
   return (
     <Layout>
-      <div className="space-y-6">
+      <AppGuide
+        appName="Pourfect"
+        tagline="Flaschen-Tracking nach Gewicht"
+        intro="Pourfect trackt den Inhalt jeder Flasche anhand ihres Gewichts. Wiege eine Flasche, und die App rechnet aus, wie viele ml noch drin sind. Perfekt für Bars, die ihren Spirituosen-Bestand auf den Milliliter genau kennen wollen. Probier's aus!"
+        steps={guideSteps}
+        storageKey="pf_guide"
+      />
+      <div className="space-y-6 mt-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold">Dashboard</h1>
           <p className="text-muted-foreground text-sm">Gesamtübersicht aller Spirituosen</p>

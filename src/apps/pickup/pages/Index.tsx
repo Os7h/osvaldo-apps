@@ -16,6 +16,14 @@ import {
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import AboutThisApp from "@/components/shared/AboutThisApp";
 import ResetDemoButton from "@/components/shared/ResetDemoButton";
+import AppGuide from "@/components/shared/AppGuide";
+import { UtensilsCrossed, Timer, Percent } from "lucide-react";
+
+const guideSteps = [
+  { icon: UtensilsCrossed, title: "1. Bestell was du willst", description: "Klick auf \"Hinzufügen\" bei jedem Gericht. Bei Burgern kannst du kleine Pommes dazu nehmen, bei Salaten ein Dressing wählen." },
+  { icon: Percent, title: "2. Happy Hour checken", description: "Zwischen 17:00 und 19:00 Uhr sind Burger günstiger! Der Preis wird automatisch angepasst — achte auf das Badge." },
+  { icon: Timer, title: "3. Abholen planen", description: "Wähle eine Abholzeit, gib Name und Telefon ein, und bestelle. Im \"Backoffice\" oben rechts siehst du alle Bestellungen." },
+];
 import { PK_PREFIX, seedPickup } from "@/lib/mock-db/seed/pickup";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ShoppingCart, Clock, Zap, Settings } from "lucide-react";
@@ -261,6 +269,13 @@ const Index = () => {
         </div>
       </nav>
 
+      <AppGuide
+        appName="Wozi Pickup"
+        tagline="Bestell-System für die Bar"
+        intro="Bestelle wie ein echter Gast! Stöbere durch die Karte, leg Burger mit Pommes in den Warenkorb, wähle Saucen und Dressings, und schick die Bestellung ab. Die App berechnet Happy-Hour-Preise automatisch und schlägt Abholzeiten vor."
+        steps={guideSteps}
+        storageKey="pk_guide"
+      />
       <section className="container mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
         <article className="lg:col-span-2 space-y-6">
           <header>

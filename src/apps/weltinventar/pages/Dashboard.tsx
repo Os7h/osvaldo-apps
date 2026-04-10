@@ -14,7 +14,15 @@ import {
   Brain,
 } from "lucide-react";
 import WeltInventarLayout from "../components/Layout";
+import AppGuide from "@/components/shared/AppGuide";
 import { supabase } from "../db";
+
+const guideSteps = [
+  { icon: Package, title: "1. Produkte durchstöbern", description: "Unter \"Produkte\" findest du 25 Artikel mit Barcodes, Preisen und Lagerbeständen. Du kannst neue hinzufügen oder bestehende bearbeiten." },
+  { icon: ScanBarcode, title: "2. Barcode scannen", description: "Im \"Scanner\"-Tab kannst du Barcodes eingeben und Produkte sofort nachschlagen — probier z.B. 4015110017826!" },
+  { icon: BarChart3, title: "3. Analytics erkunden", description: "Unter \"Analytics\" siehst du Verkaufstrends, Umsatz-Charts und KI-gestützte Prognosen. Filtere nach 30/60/90 Tagen." },
+  { icon: Brain, title: "4. KI-Insights", description: "Das System nutzt KI-Demand-Predictions — schau dir die Insights auf dem Dashboard und in den Analytics an." },
+];
 
 interface DashboardStats {
   productCount: number;
@@ -160,7 +168,14 @@ export default function Dashboard() {
 
   return (
     <WeltInventarLayout>
-      <div className="space-y-6">
+      <AppGuide
+        appName="WeltInventar AI Pro"
+        tagline="KI-gestütztes Inventar-Management"
+        intro="WeltInventar ist ein vollständiges Lagerverwaltungssystem mit Barcode-Scanner, Verkaufsanalysen und KI-gestützten Bedarfsprognosen. Erkunde das Dashboard, scanne Produkte, analysiere Trends und entdecke die KI-Features!"
+        steps={guideSteps}
+        storageKey="wi_guide"
+      />
+      <div className="space-y-6 mt-4">
         <div>
           <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
           <p className="text-muted-foreground">

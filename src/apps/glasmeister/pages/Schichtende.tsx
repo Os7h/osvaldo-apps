@@ -6,9 +6,16 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Save, RotateCcw } from "lucide-react";
+import { Loader2, Save, RotateCcw, ClipboardList, Package, Settings } from "lucide-react";
 import Layout from "../components/Layout";
+import AppGuide from "@/components/shared/AppGuide";
 import { useIsMobile } from "@/hooks/use-mobile";
+
+const guideSteps = [
+  { icon: ClipboardList, title: "1. Schichtende zählen", description: "Trage ein, wie viele Gläser gerade an der Bar stehen. Die App berechnet automatisch, was fehlt." },
+  { icon: Package, title: "2. Lager auffüllen", description: "Geh zum Tab \"Lager\" — dort siehst du, was aufgefüllt werden muss. Ein Klick holt die Gläser aus dem Lager." },
+  { icon: Settings, title: "3. Lieferungen erfassen", description: "Im \"Admin\"-Tab kannst du neuen Lagerbestand hinzufügen, wenn eine Lieferung eintrifft." },
+];
 
 interface Glass {
   id: string;
@@ -149,7 +156,14 @@ const Schichtende = () => {
 
   return (
     <Layout>
-      <Card className="shadow-xl overflow-hidden">
+      <AppGuide
+        appName="GlasMeister"
+        tagline="Gläser-Inventar für die Bar"
+        intro="GlasMeister hilft dir, den Überblick über alle Gläser zu behalten. Zähle am Schichtende, was an der Bar steht — die App rechnet aus, was fehlt und was aus dem Lager geholt werden muss. Probier's aus: ändere die Zahlen in der Tabelle und klick auf Speichern!"
+        steps={guideSteps}
+        storageKey="gm_guide"
+      />
+      <Card className="shadow-xl overflow-hidden mt-4">
         <CardHeader className="p-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div className="min-w-0">
